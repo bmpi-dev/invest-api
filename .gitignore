@@ -28,5 +28,3 @@ invest_api-*.tar
 /priv/static/
 
 .deliver/releases
-
-config/prod.secret.exs
