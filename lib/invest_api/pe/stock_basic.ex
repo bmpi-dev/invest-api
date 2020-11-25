@@ -1,4 +1,6 @@
 defmodule InvestApi.PE.StockBasic do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
 
