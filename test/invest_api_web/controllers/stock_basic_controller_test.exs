@@ -36,7 +36,22 @@ defmodule InvestApiWeb.StockBasicControllerTest do
     symbol: "some updated symbol",
     ts_code: "some updated ts_code"
   }
-  @invalid_attrs %{area: nil, curr_type: nil, delist_date: nil, enname: nil, exchange: nil, fullname: nil, industry: nil, is_hs: nil, list_date: nil, list_status: nil, market: nil, name: nil, symbol: nil, ts_code: nil}
+  @invalid_attrs %{
+    area: nil,
+    curr_type: nil,
+    delist_date: nil,
+    enname: nil,
+    exchange: nil,
+    fullname: nil,
+    industry: nil,
+    is_hs: nil,
+    list_date: nil,
+    list_status: nil,
+    market: nil,
+    name: nil,
+    symbol: nil,
+    ts_code: nil
+  }
 
   def fixture(:stock_basic) do
     {:ok, stock_basic} = PE.create_stock_basic(@create_attrs)
@@ -89,8 +104,13 @@ defmodule InvestApiWeb.StockBasicControllerTest do
   describe "update stock_basic" do
     setup [:create_stock_basic]
 
-    test "renders stock_basic when data is valid", %{conn: conn, stock_basic: %StockBasic{id: id} = stock_basic} do
-      conn = put(conn, Routes.stock_basic_path(conn, :update, stock_basic), stock_basic: @update_attrs)
+    test "renders stock_basic when data is valid", %{
+      conn: conn,
+      stock_basic: %StockBasic{id: id} = stock_basic
+    } do
+      conn =
+        put(conn, Routes.stock_basic_path(conn, :update, stock_basic), stock_basic: @update_attrs)
+
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.stock_basic_path(conn, :show, id))
@@ -115,7 +135,9 @@ defmodule InvestApiWeb.StockBasicControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, stock_basic: stock_basic} do
-      conn = put(conn, Routes.stock_basic_path(conn, :update, stock_basic), stock_basic: @invalid_attrs)
+      conn =
+        put(conn, Routes.stock_basic_path(conn, :update, stock_basic), stock_basic: @invalid_attrs)
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end

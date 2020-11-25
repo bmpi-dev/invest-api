@@ -6,9 +6,54 @@ defmodule InvestApi.PETest do
   describe "stock_basic" do
     alias InvestApi.PE.StockBasic
 
-    @valid_attrs %{area: "some area", curr_type: "some curr_type", delist_date: ~D[2010-04-17], enname: "some enname", exchange: "some exchange", fullname: "some fullname", industry: "some industry", is_hs: true, list_date: ~D[2010-04-17], list_status: true, market: "some market", name: "some name", symbol: "some symbol", ts_code: "some ts_code"}
-    @update_attrs %{area: "some updated area", curr_type: "some updated curr_type", delist_date: ~D[2011-05-18], enname: "some updated enname", exchange: "some updated exchange", fullname: "some updated fullname", industry: "some updated industry", is_hs: false, list_date: ~D[2011-05-18], list_status: false, market: "some updated market", name: "some updated name", symbol: "some updated symbol", ts_code: "some updated ts_code"}
-    @invalid_attrs %{area: nil, curr_type: nil, delist_date: nil, enname: nil, exchange: nil, fullname: nil, industry: nil, is_hs: nil, list_date: nil, list_status: nil, market: nil, name: nil, symbol: nil, ts_code: nil}
+    @valid_attrs %{
+      area: "some area",
+      curr_type: "some curr_type",
+      delist_date: ~D[2010-04-17],
+      enname: "some enname",
+      exchange: "some exchange",
+      fullname: "some fullname",
+      industry: "some industry",
+      is_hs: true,
+      list_date: ~D[2010-04-17],
+      list_status: true,
+      market: "some market",
+      name: "some name",
+      symbol: "some symbol",
+      ts_code: "some ts_code"
+    }
+    @update_attrs %{
+      area: "some updated area",
+      curr_type: "some updated curr_type",
+      delist_date: ~D[2011-05-18],
+      enname: "some updated enname",
+      exchange: "some updated exchange",
+      fullname: "some updated fullname",
+      industry: "some updated industry",
+      is_hs: false,
+      list_date: ~D[2011-05-18],
+      list_status: false,
+      market: "some updated market",
+      name: "some updated name",
+      symbol: "some updated symbol",
+      ts_code: "some updated ts_code"
+    }
+    @invalid_attrs %{
+      area: nil,
+      curr_type: nil,
+      delist_date: nil,
+      enname: nil,
+      exchange: nil,
+      fullname: nil,
+      industry: nil,
+      is_hs: nil,
+      list_date: nil,
+      list_status: nil,
+      market: nil,
+      name: nil,
+      symbol: nil,
+      ts_code: nil
+    }
 
     def stock_basic_fixture(attrs \\ %{}) do
       {:ok, stock_basic} =
@@ -53,7 +98,10 @@ defmodule InvestApi.PETest do
 
     test "update_stock_basic/2 with valid data updates the stock_basic" do
       stock_basic = stock_basic_fixture()
-      assert {:ok, %StockBasic{} = stock_basic} = PE.update_stock_basic(stock_basic, @update_attrs)
+
+      assert {:ok, %StockBasic{} = stock_basic} =
+               PE.update_stock_basic(stock_basic, @update_attrs)
+
       assert stock_basic.area == "some updated area"
       assert stock_basic.curr_type == "some updated curr_type"
       assert stock_basic.delist_date == ~D[2011-05-18]

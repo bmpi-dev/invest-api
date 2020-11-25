@@ -26,8 +26,38 @@ defmodule InvestApi.PE.StockBasic do
   @doc false
   def changeset(stock_basic, attrs) do
     stock_basic
-    |> cast(attrs, [:ts_code, :symbol, :name, :area, :industry, :fullname, :enname, :market, :exchange, :curr_type, :list_status, :list_date, :delist_date, :is_hs])
-    |> validate_required([:ts_code, :symbol, :name, :area, :industry, :fullname, :enname, :market, :exchange, :curr_type, :list_status, :list_date, :delist_date, :is_hs])
+    |> cast(attrs, [
+      :ts_code,
+      :symbol,
+      :name,
+      :area,
+      :industry,
+      :fullname,
+      :enname,
+      :market,
+      :exchange,
+      :curr_type,
+      :list_status,
+      :list_date,
+      :delist_date,
+      :is_hs
+    ])
+    |> validate_required([
+      :ts_code,
+      :symbol,
+      :name,
+      :area,
+      :industry,
+      :fullname,
+      :enname,
+      :market,
+      :exchange,
+      :curr_type,
+      :list_status,
+      :list_date,
+      :delist_date,
+      :is_hs
+    ])
     |> unique_constraint(:ts_code)
     |> unique_constraint(:symbol)
   end

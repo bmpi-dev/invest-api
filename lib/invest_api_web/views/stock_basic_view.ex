@@ -11,7 +11,8 @@ defmodule InvestApiWeb.StockBasicView do
   end
 
   def render("stock_basic.json", %{stock_basic: stock_basic}) do
-    %{id: stock_basic.id,
+    %{
+      id: stock_basic.id,
       ts_code: stock_basic.ts_code,
       symbol: stock_basic.symbol,
       name: stock_basic.name,
@@ -25,6 +26,7 @@ defmodule InvestApiWeb.StockBasicView do
       list_status: stock_basic.list_status,
       list_date: stock_basic.list_date,
       delist_date: stock_basic.delist_date,
-      is_hs: stock_basic.is_hs}
+      is_hs: stock_basic.is_hs
+    }
   end
 end

@@ -28,7 +28,8 @@ defmodule InvestApiWeb.StockBasicController do
   def update(conn, %{"id" => id, "stock_basic" => stock_basic_params}) do
     stock_basic = PE.get_stock_basic!(id)
 
-    with {:ok, %StockBasic{} = stock_basic} <- PE.update_stock_basic(stock_basic, stock_basic_params) do
+    with {:ok, %StockBasic{} = stock_basic} <-
+           PE.update_stock_basic(stock_basic, stock_basic_params) do
       render(conn, "show.json", stock_basic: stock_basic)
     end
   end
