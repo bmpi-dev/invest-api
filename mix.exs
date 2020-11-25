@@ -10,7 +10,8 @@ defmodule InvestApi.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      dialyzer: dialyzer(),
     ]
   end
 
@@ -46,6 +47,7 @@ defmodule InvestApi.MixProject do
       {:ecto_psql_extras, "~> 0.2"},
       {:distillery, "~> 2.1.1"},
       {:edeliver, "~> 1.8.0"},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
     ]
   end
 
@@ -74,5 +76,12 @@ defmodule InvestApi.MixProject do
 
   defp run_pulumi(args) do
     Mix.shell().cmd("cd ../../IaC/aws/backend/pulumi/ && pulumi --color always #{Enum.join(args, " ")}")
+  end
+
+  defp dialyzer do
+    [
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+    ]
   end
 end
