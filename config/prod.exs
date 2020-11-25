@@ -11,7 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :invest_api, InvestApiWeb.Endpoint,
   url: [host: "invest.i365.tech", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
   server: true,
   code_reloader: false,
   check_origin: ["//invest.i365.tech"]
