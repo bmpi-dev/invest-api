@@ -43,16 +43,16 @@ Using the version number from the build release command, run the deploy to produ
 mix edeliver deploy release to production --version=0.1.0+1-26b6853
 ```
 
-### Run Ecto Migrations on Production
-
-```bash
-mix edeliver migrate production
-```
-
 ### Restart prod server
 
 ```bash
 mix edeliver restart production
+```
+
+### Run Ecto Migrations on Production
+
+```bash
+mix edeliver migrate production
 ```
 
 ## Ref
